@@ -1,0 +1,131 @@
+﻿@model IEnumerable<FinalWeb2.Models.Socios>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LugarTrabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DireccionOficina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelOficiona)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaSalida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Afiliados1.Afiliados1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estados.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberShip.TipoMembrecia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.Foto)" width="40" height="40"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LugarTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DireccionOficina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelOficiona)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaSalida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Afiliados1.Afiliados1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estados.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberShip.TipoMembrecia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdSocio }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IdSocio }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdSocio })
+        </td>
+    </tr>
+}
+
+</table>

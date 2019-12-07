@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinalWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Afiliados">
+    <Key>
+      <PropertyRef Name="IdAfiliado" />
+    </Key>
+    <Property Name="IdAfiliado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Afiliados1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Socios" Relationship="Self.fk_Afiliados" FromRole="Afiliados" ToRole="Socios" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="IdEstados" />
+    </Key>
+    <Property Name="IdEstados" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Socios" Relationship="Self.fk_Estados" FromRole="Estados" ToRole="Socios" />
+  </EntityType>
+  <EntityType Name="MemberShip">
+    <Key>
+      <PropertyRef Name="IdShup" />
+    </Key>
+    <Property Name="IdShup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoMembrecia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Socios" Relationship="Self.fk_MemberShip" FromRole="MemberShip" ToRole="Socios" />
+  </EntityType>
+  <EntityType Name="Socios">
+    <Key>
+      <PropertyRef Name="IdSocio" />
+    </Key>
+    <Property Name="IdSocio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cedula" Type="Int64" Nullable="false" />
+    <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="Int64" Nullable="false" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Afiliados" Type="Int32" Nullable="false" />
+    <Property Name="Tipo_Membresia" Type="Int32" Nullable="false" />
+    <Property Name="LugarTrabajo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DireccionOficina" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TelOficiona" Type="Int64" Nullable="false" />
+    <Property Name="EstadoMembrecia" Type="Int32" Nullable="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="FechaSalida" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Afiliados1" Relationship="Self.fk_Afiliados" FromRole="Socios" ToRole="Afiliados" />
+    <NavigationProperty Name="Estados" Relationship="Self.fk_Estados" FromRole="Socios" ToRole="Estados" />
+    <NavigationProperty Name="MemberShip" Relationship="Self.fk_MemberShip" FromRole="Socios" ToRole="MemberShip" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Correo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="fk_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Socios" Type="Self.Socios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="IdAfiliado" />
+      </Principal>
+      <Dependent Role="Socios">
+        <PropertyRef Name="Afiliados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+    <End Role="Socios" Type="Self.Socios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="IdEstados" />
+      </Principal>
+      <Dependent Role="Socios">
+        <PropertyRef Name="EstadoMembrecia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MemberShip">
+    <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="1" />
+    <End Role="Socios" Type="Self.Socios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberShip">
+        <PropertyRef Name="IdShup" />
+      </Principal>
+      <Dependent Role="Socios">
+        <PropertyRef Name="Tipo_Membresia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FinalWebEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Afiliados" EntityType="Self.Afiliados" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" />
+    <EntitySet Name="MemberShip" EntityType="Self.MemberShip" />
+    <EntitySet Name="Socios" EntityType="Self.Socios" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="fk_Afiliados" Association="Self.fk_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Socios" EntitySet="Socios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estados" Association="Self.fk_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Socios" EntitySet="Socios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MemberShip" Association="Self.fk_MemberShip">
+      <End Role="MemberShip" EntitySet="MemberShip" />
+      <End Role="Socios" EntitySet="Socios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

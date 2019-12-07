@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FinalWebModelStoreContainer" CdmEntityContainer="FinalWebEntities2">
+    <EntitySetMapping Name="Afiliados">
+      <EntityTypeMapping TypeName="FinalWebModel.Afiliados">
+        <MappingFragment StoreEntitySet="Afiliados">
+          <ScalarProperty Name="IdAfiliado" ColumnName="IdAfiliado" />
+          <ScalarProperty Name="Afiliados1" ColumnName="Afiliados" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estados">
+      <EntityTypeMapping TypeName="FinalWebModel.Estados">
+        <MappingFragment StoreEntitySet="Estados">
+          <ScalarProperty Name="IdEstados" ColumnName="IdEstados" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberShip">
+      <EntityTypeMapping TypeName="FinalWebModel.MemberShip">
+        <MappingFragment StoreEntitySet="MemberShip">
+          <ScalarProperty Name="IdShup" ColumnName="IdShup" />
+          <ScalarProperty Name="TipoMembrecia" ColumnName="TipoMembrecia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Socios">
+      <EntityTypeMapping TypeName="FinalWebModel.Socios">
+        <MappingFragment StoreEntitySet="Socios">
+          <ScalarProperty Name="IdSocio" ColumnName="IdSocio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Afiliados" ColumnName="Afiliados" />
+          <ScalarProperty Name="Tipo_Membresia" ColumnName="Tipo_Membresia" />
+          <ScalarProperty Name="LugarTrabajo" ColumnName="LugarTrabajo" />
+          <ScalarProperty Name="DireccionOficina" ColumnName="DireccionOficina" />
+          <ScalarProperty Name="TelOficiona" ColumnName="TelOficiona" />
+          <ScalarProperty Name="EstadoMembrecia" ColumnName="EstadoMembrecia" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="FinalWebModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinalWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Afiliados">
+    <Key>
+      <PropertyRef Name="IdAfiliado" />
+    </Key>
+    <Property Name="IdAfiliado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Afiliados" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="IdEstados" />
+    </Key>
+    <Property Name="IdEstados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="MemberShip">
+    <Key>
+      <PropertyRef Name="IdShup" />
+    </Key>
+    <Property Name="IdShup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoMembrecia" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Socios">
+    <Key>
+      <PropertyRef Name="IdSocio" />
+    </Key>
+    <Property Name="IdSocio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cedula" Type="bigint" Nullable="false" />
+    <Property Name="Foto" Type="varchar(max)" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Telefono" Type="bigint" Nullable="false" />
+    <Property Name="Sexo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Edad" Type="int" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="Afiliados" Type="int" Nullable="false" />
+    <Property Name="Tipo_Membresia" Type="int" Nullable="false" />
+    <Property Name="LugarTrabajo" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="DireccionOficina" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="TelOficiona" Type="bigint" Nullable="false" />
+    <Property Name="EstadoMembrecia" Type="int" Nullable="false" />
+    <Property Name="FechaIngreso" Type="date" />
+    <Property Name="FechaSalida" Type="date" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="70" />
+    <Property Name="Clave" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="fk_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Socios" Type="Self.Socios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="IdAfiliado" />
+      </Principal>
+      <Dependent Role="Socios">
+        <PropertyRef Name="Afiliados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+    <End Role="Socios" Type="Self.Socios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="IdEstados" />
+      </Principal>
+      <Dependent Role="Socios">
+        <PropertyRef Name="EstadoMembrecia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MemberShip">
+    <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="1" />
+    <End Role="Socios" Type="Self.Socios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberShip">
+        <PropertyRef Name="IdShup" />
+      </Principal>
+      <Dependent Role="Socios">
+        <PropertyRef Name="Tipo_Membresia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FinalWebModelStoreContainer">
+    <EntitySet Name="Afiliados" EntityType="Self.Afiliados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberShip" EntityType="Self.MemberShip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Socios" EntityType="Self.Socios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Afiliados" Association="Self.fk_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Socios" EntitySet="Socios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estados" Association="Self.fk_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Socios" EntitySet="Socios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MemberShip" Association="Self.fk_MemberShip">
+      <End Role="MemberShip" EntitySet="MemberShip" />
+      <End Role="Socios" EntitySet="Socios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
